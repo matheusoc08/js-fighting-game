@@ -26,6 +26,7 @@ class Sprite{
         }
         this.color = color;
         this.isAttacking;
+        this.health = 100;
     }
 
     draw(){
@@ -65,7 +66,7 @@ class Sprite{
 
 const player = new Sprite({
     position: {
-        x: 0,
+        x: 256,
         y: 0
     },
     velocity: {
@@ -80,7 +81,7 @@ const player = new Sprite({
 
 const enemy = new Sprite({
     position: {
-        x: 400,
+        x: 768,
         y: 100
     },
     velocity: {
@@ -127,6 +128,37 @@ function rectangularCollision({ rectahgle1, rectahgle2}){
     )
 }
 
+function determinedWinner({player, enemy, timerId}){
+    clearTimeout(timerId);
+    document.querySelector('#displayText').style.display = 'flex';
+
+    if(player.health === enemy.health){
+        document.querySelector('#displayText').innerHTML = 'Tie';
+    }
+    else if(player.health > enemy.health){
+        document.querySelector('#displayText').innerHTML = 'Player 1 Wins';
+    }
+    else{
+        document.querySelector('#displayText').innerHTML = 'Player 2 Wins';
+    }
+}
+
+let timer = 10;
+let timerId;
+function decreaseTimer(){
+    if(timer > 0){
+        timerId = setTimeout(decreaseTimer, 1000)
+        timer--
+        document.querySelector('#timer').innerHTML = timer;
+    }
+
+    if(timer === 0){
+        determinedWinner({player, enemy, timerId});
+    }
+}
+
+decreaseTimer();
+
 function animate(){
     window.requestAnimationFrame(animate);
     c.fillStyle = 'black'
@@ -157,8 +189,8 @@ function animate(){
         rectahgle2: enemy
     }) && player.isAttacking){
         player.isAttacking = false;
-
-        console.log('Player attack successuful');
+        enemy.health -= 20;
+        document.querySelector('#enemyHealth').style.width = enemy.health + '%';
     }
 
     if (rectangularCollision({
@@ -166,8 +198,13 @@ function animate(){
         rectahgle2: player
     }) && enemy.isAttacking){
         enemy.isAttacking = false;
+        player.health -= 20;
+        document.querySelector('#playerHealth').style.width = player.health + '%';
+    }
 
-        console.log('Enemy attack successuful');
+    // end game based on health
+    if (enemy.health <= 0 || player.health <= 0){
+        determinedWinner({player, enemy, timerId})
     }
 }
 
