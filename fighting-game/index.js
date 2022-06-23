@@ -69,6 +69,10 @@ const player = new Fighter({
         takeHit: {
             imageSrc: './img/samuraiMack/Take Hit - white silhouette.png',
             framesMax: 4
+        },
+        death: {
+            imageSrc: './img/samuraiMack/Death.png',
+            framesMax: 6
         }
     },
     attackBox: {
@@ -125,6 +129,10 @@ const enemy = new Fighter({
         takeHit: {
             imageSrc: './img/kenji/Take hit.png',
             framesMax: 3
+        },
+        death: {
+            imageSrc: './img/kenji/Death.png',
+            framesMax: 7
         }
     },
     attackBox: {
@@ -250,27 +258,33 @@ function animate(){
 animate();
 
 window.addEventListener('keydown', (event) => {
-    switch (event.key){
-        case 'd':
-            keys.d.pressed = true;
-            player.lastKey = 'd';
-            break;
 
-        case 'a':
-            keys.a.pressed = true;
-            player.lastKey = 'a';
-            break;
+    if(!player.dead){
+        switch (event.key){
+            case 'd':
+                keys.d.pressed = true;
+                player.lastKey = 'd';
+                break;
 
-        case 'w':
-            keys.w.pressed = true;
-            player.velocity.y = -15;
-            break;
-        
-        case ' ':
-            player.attack();
-            break;
-     
+            case 'a':
+                keys.a.pressed = true;
+                player.lastKey = 'a';
+                break;
+
+            case 'w':
+                keys.w.pressed = true;
+                player.velocity.y = -15;
+                break;
+            
+            case ' ':
+                player.attack();
+                break;
+        }
+    }
+
+    if(!enemy.dead){
         // Enemy keys
+        switch (event.key){
         case 'ArrowRight':
             keys.ArrowRight.pressed = true;
             enemy.lastKey = 'ArrowRight';
@@ -289,6 +303,7 @@ window.addEventListener('keydown', (event) => {
         case 'ArrowDown':
             enemy.attack();
             break;
+        }
     }
     
 })
