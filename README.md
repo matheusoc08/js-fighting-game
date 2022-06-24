@@ -3,9 +3,6 @@ This project it's a first try 2D fighting game using JavaScript and HTML Canvas.
 
 I'm looking foward to study to keep improving the project, adding a home menu, new characters with different weapons, select character menu, stages and find a way to set up an A.I for a single player mode.
 
-[Chris Courses](https://www.youtube.com/c/ChrisCourses)  
-[Original game](https://github.com/chriscourses/fighting-game)
-
 ## Goals
 - [x] Finish the clone
 - [ ] Add a home menu
@@ -14,16 +11,24 @@ I'm looking foward to study to keep improving the project, adding a home menu, n
 - [ ] New stages
 - [ ] Set an A.I opponent
 
- # Sprites
+## Testing
+The game was deployed at [Netlify](https://www.netlify.com/) and it's avaiable to play by browser [here](https://celadon-semolina-9c8aa5.netlify.app/).
+
+# Sprites
  For the course project the characters sprites was downloaded for free at Itch.io.
 
  ## Characters Sprites
  The characters was downloaded from [Luiz Melo page](https://luizmelo.itch.io/). Check out some of his amazing works.
 
-[Martial Hero #1](https://luizmelo.itch.io/martial-hero)  
-[Martial Hero #2](https://luizmelo.itch.io/martial-hero-2)
+ [Martial Hero #1](https://luizmelo.itch.io/martial-hero)  
+ [Martial Hero #2](https://luizmelo.itch.io/martial-hero-2)
 
-## Scenario Sprites
-The oak woods stage assets was downloaded from [Brullov page](https://brullov.itch.io/). Also great pixel arts there.
+ ## Scenario Sprites
+ The oak woods stage assets was downloaded from [Brullov page](https://brullov.itch.io/). Also great pixel arts there.
 
-[Oak Woods Assets](https://brullov.itch.io/oak-woods)
+ [Oak Woods Assets](https://brullov.itch.io/oak-woods)
+
+# Reference
+ [Chris Courses](https://www.youtube.com/c/ChrisCourses)  
+ [Original game repository](https://github.com/chriscourses/fighting-game)
+
