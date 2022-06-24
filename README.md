@@ -7,7 +7,7 @@ I'm looking foward to study to keep improving the project, adding a home menu, n
 [Original game](https://github.com/chriscourses/fighting-game)
 
 ## Goals
-- [ ] Finish the clone
+- [x] Finish the clone
 - [ ] Add a home menu
 - [ ] New characters
 - [ ] Select character menu
