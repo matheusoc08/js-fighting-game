@@ -85,6 +85,7 @@ class Fighter extends Sprite{
         this.framesHold = 4;
         this.sprites = sprites;
         this.dead = false;
+        this.combo = 0;
 
         for (const sprite in this.sprites){
             sprites[sprite].image = new Image();
@@ -117,7 +118,15 @@ class Fighter extends Sprite{
     }
 
     attack(){
-        this.switchSprite('attack1');
+        if(this.combo === 0){
+            this.combo++;
+            this.switchSprite('attack1');
+        }
+        else{
+            this.combo--;
+            this.switchSprite('attack2');
+        }
+
         this.isAttacking = true;
     }
 
@@ -142,7 +151,12 @@ class Fighter extends Sprite{
         }
 
         //overriding all other animations with the attack animation
-        if(this.image === this.sprites.attack1.image && this.frameCurrent < this.sprites.attack1.framesMax - 1 ) return
+        if(this.image === this.sprites.attack1.image && this.frameCurrent < this.sprites.attack1.framesMax - 1 ){
+            return
+        }
+        else if(this.image === this.sprites.attack2.image && this.frameCurrent < this.sprites.attack2.framesMax - 1 ){
+            return
+        }
 
         //override when fighter gets hit
         if(this.image === this.sprites.takeHit.image && this.frameCurrent < this.sprites.takeHit.framesMax - 1) return
@@ -184,6 +198,14 @@ class Fighter extends Sprite{
                 if(this.image != this.sprites.attack1.image){
                     this.image = this.sprites.attack1.image;
                     this.framesMax = this.sprites.attack1.framesMax;
+                    this.frameCurrent = 0;
+                }
+                break;
+                
+            case 'attack2':
+                if(this.image != this.sprites.attack2.image){
+                    this.image = this.sprites.attack2.image;
+                    this.framesMax = this.sprites.attack2.framesMax;
                     this.frameCurrent = 0;
                 }
                 break;

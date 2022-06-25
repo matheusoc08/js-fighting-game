@@ -66,6 +66,10 @@ const player = new Fighter({
             imageSrc: './assets/img/samuraiMack/Attack1.png',
             framesMax: 6
         },
+        attack2: {
+            imageSrc: './assets/img/samuraiMack/Attack2.png',
+            framesMax: 6
+        },
         takeHit: {
             imageSrc: './assets/img/samuraiMack/Take Hit - white silhouette.png',
             framesMax: 4
@@ -78,10 +82,10 @@ const player = new Fighter({
     attackBox: {
         offset: {
             x: 150,
-            y: 40
+            y: 0
         },
         width: 100,
-        height: 50
+        height: 100
     }
 });
 
@@ -126,6 +130,10 @@ const enemy = new Fighter({
             imageSrc: './assets/img/kenji/Attack1.png',
             framesMax: 4
         },
+        attack2: {
+            imageSrc: './assets/img/kenji/Attack2.png',
+            framesMax: 4
+        },
         takeHit: {
             imageSrc: './assets/img/kenji/Take hit.png',
             framesMax: 3
@@ -137,11 +145,11 @@ const enemy = new Fighter({
     },
     attackBox: {
         offset: {
-            x: -150,
-            y: 40
+            x: -170,
+            y: 30
         },
-        width: 100,
-        height: 50
+        width: 80,
+        height: 80
     }
 });
 
@@ -227,7 +235,6 @@ function animate(){
     }) && player.isAttacking && player.frameCurrent === 4){
         enemy.takeHit();
         player.isAttacking = false;
-
         // document.querySelector('#enemyHealth').style.width = enemy.health + '%';
         gsap.to('#p2', {
             width: enemy.health + '%'
